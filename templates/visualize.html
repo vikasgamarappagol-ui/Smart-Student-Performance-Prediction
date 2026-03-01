@@ -1,0 +1,116 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2 class="text-center text-primary mb-4">Advanced Analytics Dashboard</h2>
+
+<div class="row g-4">
+
+    <div class="col-md-6">
+        <div class="card shadow-lg p-4 chart-card">
+            <h5 class="text-center">Performance Distribution</h5>
+            <canvas id="barChart"></canvas>
+            <button class="btn btn-sm btn-outline-primary mt-3" onclick="downloadChart('barChart')">
+                Download Chart
+            </button>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="card shadow-lg p-4 chart-card">
+            <h5 class="text-center">KMeans Cluster Plot</h5>
+            <canvas id="clusterChart"></canvas>
+        </div>
+    </div>
+
+</div>
+
+<script>
+
+const performanceData = {{ performance_counts | tojson }};
+const clusterDataRaw = {{ cluster_data | tojson }};
+const centroidData = {{ centroid_points | tojson }};
+
+const labels = ['Low', 'Medium', 'High'];
+
+/* -------- Animated Bar Chart -------- */
+new Chart(document.getElementById('barChart'), {
+    type: 'bar',
+    data: {
+        labels: labels,
+        datasets: [{
+            label: 'Students',
+            data: performanceData,
+            backgroundColor: ['#ff4b5c', '#ffa500', '#28a745']
+        }]
+    },
+    options: {
+        responsive: true,
+        animation: {
+            duration: 2000,
+            easing: 'easeOutBounce'
+        }
+    }
+});
+
+/* -------- Cluster Scatter Plot -------- */
+
+const cluster0 = [];
+const cluster1 = [];
+const cluster2 = [];
+
+clusterDataRaw.forEach(point => {
+    if (point.cluster === 0) cluster0.push({x: point.x, y: point.y});
+    if (point.cluster === 1) cluster1.push({x: point.x, y: point.y});
+    if (point.cluster === 2) cluster2.push({x: point.x, y: point.y});
+});
+
+new Chart(document.getElementById('clusterChart'), {
+    type: 'scatter',
+    data: {
+        datasets: [
+            {
+                label: 'Cluster 0',
+                data: cluster0,
+                backgroundColor: '#007bff'
+            },
+            {
+                label: 'Cluster 1',
+                data: cluster1,
+                backgroundColor: '#28a745'
+            },
+            {
+                label: 'Cluster 2',
+                data: cluster2,
+                backgroundColor: '#dc3545'
+            },
+            {
+                label: 'Centroids',
+                data: centroidData,
+                backgroundColor: '#000',
+                pointRadius: 10
+            }
+        ]
+    },
+    options: {
+        responsive: true,
+        scales: {
+            x: { title: { display: true, text: 'Attendance' } },
+            y: { title: { display: true, text: 'Study Hours' } }
+        },
+        animation: {
+            duration: 2000
+        }
+    }
+});
+
+/* -------- Download Chart Function -------- */
+function downloadChart(id) {
+    const link = document.createElement('a');
+    link.href = document.getElementById(id).toDataURL();
+    link.download = "chart.png";
+    link.click();
+}
+
+</script>
+
+{% endblock %}

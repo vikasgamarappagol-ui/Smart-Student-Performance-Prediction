@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="hero-section">
+    <div class="hero-content">
+        <h1 class="display-4 fw-bold animate-float">
+            <span class="gradient-text">InsightX AI</span>
+        </h1>
+        <p class="lead animate-pulse"> <span class="highlight-text">Neural Ninjas</span></p>
+        <div class="mt-4 team-members-in-hero animate-slide-up">
+            <div class="team-badge-container">
+                <div class="team-badge">Vikas A</div>
+                <div class="team-badge">Nayan H</div>
+                <div class="team-badge">Hrishikesh K</div>
+            </div>
+        </div>
+    </div>
+    <div class="floating-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+    </div>
+</div>
+
+<section class="about-section">
+    <div class="container">
+        <div class="row g-4">
+            <div class="col-12">
+                <div class="info-card glow-card p-4 animate-scale">
+                    <div class="card-shine"></div>
+                    <h3 class="gradient-text-secondary">
+                        <i class="fas fa-rocket me-2"></i>About the Project
+                    </h3>
+                    <p class="project-description">This intelligent system predicts student final exam scores using advanced Machine Learning algorithms. It classifies students into Pass/Fail categories, evaluates performance levels, and identifies academic risk groups through clustering.</p>
+                    <p class="project-description highlight-description">The system helps institutions provide early academic support and data-driven decision-making to improve student outcomes.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row g-4 mt-4">
+            <div class="col-12">
+                <div class="team-showcase animate-bounce-in">
+                    <h3 class="text-center mb-4 gradient-text">
+                        <i class="fas fa-users me-2"></i>Meet the Neural Ninjas
+                    </h3>
+                    <div class="team-grid">
+                        <div class="team-member-card">
+                            <div class="member-avatar vikas"></div>
+                            <h4>Vikas A</h4>
+                            <div class="member-role">Lead Developer</div>
+                            <div class="member-social">
+                                <span class="social-icon"><i class="fab fa-github"></i></span>
+                                <span class="social-icon"><i class="fab fa-linkedin"></i></span>
+                            </div>
+                        </div>
+                        <div class="team-member-card">
+                            <div class="member-avatar nayan"></div>
+                            <h4>Nayan H</h4>
+                            <div class="member-role">ML Engineer</div>
+                            <div class="member-social">
+                                <span class="social-icon"><i class="fab fa-github"></i></span>
+                                <span class="social-icon"><i class="fab fa-linkedin"></i></span>
+                            </div>
+                        </div>
+                        <div class="team-member-card">
+                            <div class="member-avatar hrishikesh"></div>
+                            <h4>Hrishikesh K</h4>
+                            <div class="member-role">Data Scientist</div>
+                            <div class="member-social">
+                                <span class="social-icon"><i class="fab fa-github"></i></span>
+                                <span class="social-icon"><i class="fab fa-linkedin"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2 class="text-center text-danger">Model Performance</h2>
+
+<div class="row">
+<div class="col-md-4">
+<div class="card shadow p-3">
+<h5>Linear Regression</h5>
+<p>R2 Score: {{r2}}</p>
+</div>
+</div>
+
+<div class="col-md-4">
+<div class="card shadow p-3">
+<h5>Decision Tree</h5>
+<p>Accuracy: {{dt_acc}}</p>
+</div>
+</div>
+
+<div class="col-md-4">
+<div class="card shadow p-3">
+<h5>KNN</h5>
+<p>Accuracy: {{knn_acc}}</p>
+</div>
+</div>
+</div>
+
+{% endblock %}

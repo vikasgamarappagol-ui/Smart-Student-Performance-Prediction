@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2 class="text-center text-primary mb-4">Upload CSV Dataset</h2>
+
+<div class="card shadow p-4">
+
+<form method="POST" enctype="multipart/form-data">
+    <input type="file" name="file" class="form-control" required>
+    <button class="btn btn-success mt-3 w-100">Upload</button>
+</form>
+
+{% if message %}
+<div class="alert alert-success mt-3">
+    {{ message }}
+    <br>
+    Rows: {{ rows }}
+    <br>
+    Columns: {{ cols }}
+</div>
+{% endif %}
+
+</div>
+
+{% endblock %}

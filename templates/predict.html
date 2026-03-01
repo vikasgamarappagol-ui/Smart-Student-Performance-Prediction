@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2 class="text-center text-success">Prediction Panel</h2>
+
+<form method="POST">
+<div class="row">
+{% for field in [
+"Attendance","StudyHours","AssignmentScore","PreviousGPA",
+"ParticipationLevel","InternetUsage","SleepHours",
+"FamilySupportIndex","ExtraCurricular"] %}
+
+<div class="col-md-4 mt-3">
+<input type="number" step="any" name="{{field}}" class="form-control" placeholder="{{field}}" required>
+</div>
+{% endfor %}
+</div>
+
+<button class="btn btn-primary mt-4 w-100">Predict</button>
+</form>
+
+{% if score %}
+<div class="card mt-4 shadow p-3 bg-success text-white">
+<h4>Results</h4>
+<p>Final Score: {{score}}</p>
+<p>Pass/Fail: {{result}}</p>
+<p>Performance: {{performance}}</p>
+<p>Cluster Group: {{cluster}}</p>
+</div>
+{% endif %}
+
+{% endblock %}

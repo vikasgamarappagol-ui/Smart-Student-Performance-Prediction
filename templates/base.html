@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>InsightX AI System</title>
+
+    <!-- Responsive meta -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body class="bg-light">
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg custom-navbar shadow">
+    <div class="container">
+
+        <!-- Brand -->
+        <a class="navbar-brand fw-bold text-white">INSIGHTX AI</a>
+
+        <!-- Mobile Toggle -->
+        <button class="navbar-toggler bg-light" type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Navigation Buttons -->
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav gap-3">
+
+                <li class="nav-item">
+                    <a class="nav-btn home-btn {% if request.path=='/' %}active-btn{% endif %}" href="/">Home</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-btn upload-btn {% if request.path=='/upload' %}active-btn{% endif %}" href="/upload">Upload</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-btn predict-btn {% if request.path=='/predict' %}active-btn{% endif %}" href="/predict">Prediction</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-btn visualize-btn {% if request.path=='/visualize' %}active-btn{% endif %}" href="/visualize">Visualization</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-btn metrics-btn {% if request.path=='/metrics' %}active-btn{% endif %}" href="/metrics">Metrics</a>
+                </li>
+
+            </ul>
+        </div>
+
+    </div>
+</nav>
+
+<!-- Page Content -->
+<div class="container mt-4">
+    {% block content %}{% endblock %}
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
